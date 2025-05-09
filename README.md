@@ -1,2 +1,2 @@
 # friday
-This project is underdevelopment name Friday, by Oppenheimer
+This porfolio is underdevelopment name Friday, by Luong aka Oppenheimer
