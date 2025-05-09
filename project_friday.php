@@ -1,7 +1,6 @@
 project-friday/
 │
 ├── backend/                   # Python Flask API
-│   ├── app.py
 │   ├── routes/
 │   │   └── projects.py
 │   ├── templates/             # For future blog or contact page if needed
@@ -10,6 +9,8 @@ project-friday/
 │
 ├── frontend/                  # HTML/CSS/JS Frontend
 │   ├── index.html
+|   ├── img/
+│   │   └── image.jpg
 │   ├── css/
 │   │   └── style.css
 │   └── js/
