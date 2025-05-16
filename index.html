@@ -6,6 +6,7 @@
         <title>Portfolio Website</title>
         <link rel="stylesheet" href="css/style.css" />
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+        <script src="https://unpkg.com/scrollreveal"></script>
     </head>
     <body>
         <header class="header">
@@ -14,15 +15,16 @@
             </a>
             <div class="menu-toggle" id="menu-toggle">
                 <i class="bx bx-menu"></i>
-                    MENU
             </div>
             <nav class="navbar">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
-                <a href="#services">Services</a>
+                <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
             </nav>
         </header>
+        <div class="overlay" id="overlay"></div>
+        <!------HOME SECTION------>
         <section class="home" id="home">
             <div class="home-content">
                 <h1>Hi, I'm <span>Luong</span></h1>
@@ -46,6 +48,7 @@
                 <img src="img/lqimg.jpeg" alt="">
             </div>
         </section>
+        <!------ABOUT ME SECTION------>
         <section class="about" id="about">
             <div class="about-img">
                 <img src="img/lqimg.jpeg" alt="">
@@ -78,41 +81,45 @@
                 </div>
             </div>
         </section>
-        <section class="services" id="services">
-            <h2 class="heading">Services</h2>
-            <div class="services-container">
-                <div class="service-box">
-                    <div class="service-info">
-                        <i class="bx bxl-figma"></i>
-                        <h4>Data Analyst / Data Scientist</h4>
-                        <p>
-                            I am a data analyst with a passion for transforming data into actionable insights. 
-                            I have experience in data visualization, statistical analysis, and machine learning. I am proficient in Python, SQL, and Tableau.
-                        </p>
-                    </div>
+        <!------SKILLS SECTION------>
+        <section class="skills" id="skills">
+            <h2 class="heading">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item" style="--target-width: 95%;">
+                    <span>Python</span><span class="skill-percent">95%</span>
+                    <div class="progress-bar"><div></div></div>
                 </div>
-                <div class="service-box">
-                    <div class="service-info">
-                        <i class="bx bx-code"></i>
-                        <h4>Frontend Development</h4>
-                        <p>
-                            I am a data analyst with a passion for transforming data into actionable insights. 
-                            I have experience in data visualization, statistical analysis, and machine learning. I am proficient in Python, SQL, and Tableau.
-                        </p>
-                    </div>
+                <div class="skill-item" style="--target-width: 70%;">
+                    <span>JavaScript</span><span class="skill-percent">70%</span>
+                    <div class="progress-bar"><div></div></div>
                 </div>
-                <div class="service-box">
-                    <div class="service-info">
-                        <i class="bx bx-code-curly"></i>
-                        <h4>Backend Development</h4>
-                        <p>
-                            I am a data analyst with a passion for transforming data into actionable insights. 
-                            I have experience in data visualization, statistical analysis, and machine learning. I am proficient in Python, SQL, and Tableau.
-                        </p>
-                    </div>
+                <div class="skill-item" style="--target-width: 85%;">
+                    <span>HTML, CSS</span><span class="skill-percent">85%</span>
+                    <div class="progress-bar"><div></div></div>
+                </div>
+                <div class="skill-item" style="--target-width: 85%;">
+                    <span>SQL</span><span class="skill-percent">85%</span>
+                    <div class="progress-bar"><div></div></div>
+                </div>
+                <div class="skill-item" style="--target-width: 80%;">
+                    <span>ArcGIS</span><span class="skill-percent">80%</span>
+                    <div class="progress-bar"><div></div></div>
+                </div>
+                <div class="skill-item" style="--target-width: 80%;">
+                    <span>QGIS, PostGIS</span><span class="skill-percent">80%</span>
+                    <div class="progress-bar"><div></div></div>
+                </div>
+                <div class="skill-item" style="--target-width: 60%;">
+                    <span>R</span><span class="skill-percent">60%</span>
+                    <div class="progress-bar"><div></div></div>
+                </div>
+                <div class="skill-item" style="--target-width: 85%;">
+                    <span>MapboxGL</span><span class="skill-percent">85%</span>
+                    <div class="progress-bar"><div></div></div>
                 </div>
             </div>
         </section>
+        <!------PROJECTS SECTION------>
         <section class="projects" id="projects">
             <h2 class="heading">My Projects</h2>
             <div class="projects-box">
@@ -151,6 +158,7 @@
                 </div>
             </div>
         </section>
+        <!------FOOTER------>
         <footer class="footer">
             <div class="social-icon">
                 <a href="https://github.com/lquan02" target="_blank">
@@ -165,7 +173,7 @@
                     <a href="#">FAQ</a>
                 </li>
                 <li>
-                    <a href="#services">Services</a>
+                    <a href="#skills">Skills</a>
                 </li>
                 <li>
                     <a href="#about">About</a>

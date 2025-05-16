@@ -10,7 +10,7 @@
     --bg-color: #080808;
     --second-bg-color: #101010;
     --text-color: white;
-    --main-color: #2682b4;
+    --main-color: #8FC757;
 }
 html {
     font-size: 60%;
@@ -25,7 +25,7 @@ body {
     width: 100%;
     top: 0;
     left: 0;
-    padding: 4rem 15%;
+    padding: 4rem 10% 4rem 15%;
     background: black;
     backdrop-filter: blur(10px);
     display: flex;
@@ -36,15 +36,31 @@ body {
 .menu-toggle {
     display: none;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     cursor: pointer;
     font-size: 1.6rem;
     color: #999999;
     font-weight: 500;
     transition: color 0.3s ease;
+    font-size: 2rem;
 }
 .menu-toggle i {
-    font-size: 2.7rem;
+    font-size: 3.5rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    opacity: 1;
+}
+.menu-toggle i.fade-out {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+.bx-x {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+.bx-menu {
+    transform: rotate(0deg);
+    opacity: 1;
 }
 .logo {
     font-size: 3rem;
@@ -59,8 +75,9 @@ body {
 span {
     background: linear-gradient(
         270deg,
-        #f49c1a 10%,
-        #2682b4 100%
+        #2A7B9B 10%,
+        #8FC757 55%,
+        #EDDD53 100%
     );
     background-clip: text;
     color: transparent;
@@ -250,55 +267,50 @@ section {
     font-size: 7rem;
     margin: 5rem 0;
 }
-.services {
+/*****SKILL SECTION*****/
+.skills {
+    padding: 6rem 15%;
     background-color: var(--bg-color);
-    color: black;
 }
-.services h2 {
-    color: var(--text-color);
-}
-.services-container {
+.skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: center;
-    gap: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 6rem;
 }
-.service-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--main-color);
-    height: 600px;
-    border-radius: 3rem;
-    cursor: pointer;
-    border: 5px solid transparent;
-    transition: 0.4s ease-in-out;
-}
-.service-box:hover {
-    background: var(--second-bg-color);
-    color: var(--main-color);
-    border: 5px solid var(--main-color);
-}
-.service-info {
+.skill-item {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem;
+    font-size: 1.8rem;
+    color: var(--text-color);
 }
-.service-info h4 {
-    font-size: 4rem;
-    margin: 2rem 0;
-    font-weight: 800;
-}
-.service-info p {
-    font-size: 1.4rem;
+.skill-item span {
     font-weight: 600;
-    line-height: 1.7;
+    display: inline-block;
+    color: var(--text-color);
 }
-.service-info i {
-    font-size: 8rem;
+.skill-item .skill-percent {
+    float: right;
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+.progress-bar div {
+    height: 100%;
+    background-color: var(--main-color);
+    transition: width 1.5s ease-in-out;
+    width: 0;
+}
+.skill-item.animated .progress-bar div {
+    animation: fillBar 2s forwards;
+}
+@keyframes fillBar {
+    0% { width: 0; }
+    100% { width: var(--target-width); }
 }
 .projects {
     background-color: var(--second-bg-color);
@@ -381,38 +393,85 @@ section {
     margin-top: 40px;
     font-size: 16px;
 }
+@keyframes fadeSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 500;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
 @media (max-width: 1285px) {
     #menu-toggle {
         display: flex;
     }
     .navbar {
-        position: fixed;
-        top: 8rem;
+        position: absolute;
+        top: 100%;
         left: 0;
-        height: 100vh;
-        width: 35%;
+        width: 100%;
         background-color: #000;
-        padding: 5rem 3rem;
-        display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        gap: 3rem;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        align-items: flex-end;
+        padding: 0 4rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
         z-index: 999;
     }
+    .navbar.active {
+        max-height: 300px; 
+        opacity: 1;
+        transform: translateY(0);
+        padding: 2rem 4rem;
+    }
     .navbar a {
+        width: 100%;
+        text-align: right;
+        padding-right: 2rem;
         display: block;
         font-size: 2rem;
         margin: 1rem 0;
         color: var(--text-color);
+        opacity: 0;
+        transform: translateY(-5px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
-    .navbar.active {
-        display: flex;
+     .navbar.active a {
         opacity: 1;
-        pointer-events: all;
-        transform: translateX(0);
+        transform: translateY(0);
+    }
+    .navbar.active a:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    .navbar.active a:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .navbar.active a:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+    .navbar.active a:nth-child(4) {
+        animation-delay: 0.4s;
     }
     .home {
         flex-direction: column-reverse;
