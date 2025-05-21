@@ -2,6 +2,8 @@ const menuToggle = document.querySelector('#menu-toggle');
 const navbar = document.querySelector('.navbar');
 const menuIcon = menuToggle.querySelector('i');
 const overlay = document.querySelector('#overlay');
+const skillItems = document.querySelectorAll('.skill-item');
+const cards = document.querySelectorAll('.resume-card.clickable');
 
 // Toggle dropdown menu
 menuToggle.addEventListener('click', () => {
@@ -69,8 +71,6 @@ ScrollReveal().reveal('.about-content, .project-card', { origin: 'right' });
 ScrollReveal().reveal('.skills-grid', { origin: 'bottom', interval: 200 });
 ScrollReveal().reveal('.project-box', { origin: 'left', interval: 200 });
 
-const skillItems = document.querySelectorAll('.skill-item');
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -82,3 +82,15 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.5 }); // Trigger when 50% visible
 
 skillItems.forEach(item => observer.observe(item));
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        const wasOpen = card.classList.contains('open');
+
+        // Close all other cards
+        cards.forEach(c => c.classList.remove('open'));
+
+        // Only open this card if it wasn’t already open
+        if (!wasOpen) card.classList.add('open');
+    });
+});

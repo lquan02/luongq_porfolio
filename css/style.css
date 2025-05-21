@@ -10,7 +10,7 @@
     --bg-color: #080808;
     --second-bg-color: #101010;
     --text-color: white;
-    --main-color: #8FC757;
+    --main-color: #fae156;
 }
 html {
     font-size: 60%;
@@ -75,24 +75,41 @@ body {
 span {
     background: linear-gradient(
         270deg,
-        #2A7B9B 10%,
-        #8FC757 55%,
-        #EDDD53 100%
+        #fa709a 0%,
+        #fee140 100%
     );
     background-clip: text;
     color: transparent;
 }
 .navbar a {
+    position: relative;
+    display: inline-block;
     font-size: 1.8rem;
     color: var(--text-color);
     margin-left: 4rem;
     font-weight: 500;
-    transition: 0.3s ease-in-out;
-    border-bottom: 3px solid transparent;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
-.navbar a:hover {
-    color: var(--main-color);
-    border-bottom: 3px solid var(--main-color);
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--main-color);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.navbar a:hover::after,
+.navbar a:focus::after,
+.navbar a.active::after {
+    transform: scaleX(1);
+    opacity: 1;
+    transform-origin: right;
 }
 section {
     min-height: 100vh;
@@ -126,15 +143,10 @@ section {
     line-height: 1.8;
 }
 .home-img img {
-    width: 32vw;
+    width: 30vw;
     border-radius: 50%;
-    box-shadow: 0 0 25px var(--main-color);
+    box-shadow: none;
     transition: 0.4s ease-in-out;
-}
-.home-img img:hover {
-    box-shadow: 0 0 25px var(--main-color),
-                0 0 50px var(--main-color),
-                0 0 100px var(--main-color);
 }
 .social-icon a {
     display: inline-flex;
@@ -290,6 +302,96 @@ section {
 }
 .skill-item .skill-percent {
     float: right;
+}
+/*****RESUME SECTION*****/
+.resume-section {
+    background-color: var(--bg-color);
+    padding: 8rem 15%;
+}
+.resume-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.resume-card {
+    background-color: #1a1a1a;
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+}
+.resume-card.highlight {
+    background-color: #e2b33c;
+    color: black;
+}
+.resume-card.highlight ul {
+    color: #333;
+}
+.resume-header h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--main-color); /* use your highlight color */
+    transition: color 0.3s ease;
+}
+.resume-header h4 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+.resume-header p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+.resume-card ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+.center-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+/* Hide by default */
+.resume-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
+    padding-top: 0;
+    opacity: 0;
+    pointer-events: none; /* Prevent interaction when closed */
+}
+/* When toggled open */
+.resume-card.open .resume-details {
+    max-height: 500px; /* adjust as needed */
+    padding-top: 1.5rem;
+    opacity: 1;
+    pointer-events: auto;;
+}
+.resume-card:hover {
+    background-color: var(--main-color);
+    color: black;
+}
+/* Preserve original header styles on hover */
+.resume-card:hover .resume-header h3 {
+    color: black;
+}
+/* Remove hover from highlighted (yellow) */
+.resume-card.highlight:hover {
+    background-color: #e2b33c;
+    color: black; 
+}
+.resume-card.highlight:hover .resume-header h3 {
+    color: black;
+}
+.resume-card,
+.resume-header h3 {
+    transition: all 0.3s ease;
 }
 .progress-bar {
     width: 100%;
@@ -483,7 +585,7 @@ section {
         text-align: center;
     }
     .home-img img {
-        width: 56vw;
+        width: 40vw;
     }
     .about {
         flex-direction: column-reverse;
