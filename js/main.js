@@ -5,6 +5,23 @@ const overlay = document.querySelector('#overlay');
 const skillItems = document.querySelectorAll('.skill-item');
 const cards = document.querySelectorAll('.resume-card.clickable');
 
+//Refesh the page when the user refreshes the page
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+window.addEventListener('load', () => {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Fade-in effect after scroll
+    document.body.classList.add('loaded');
+});
+
 // Toggle dropdown menu
 menuToggle.addEventListener('click', () => {
     menuIcon.classList.add('fade-out');
@@ -93,4 +110,15 @@ cards.forEach(card => {
         // Only open this card if it wasn’t already open
         if (!wasOpen) card.classList.add('open');
     });
+});
+
+window.addEventListener('load', () => {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Fade out loading spinner and reveal content
+    document.body.classList.add('loaded');
 });
